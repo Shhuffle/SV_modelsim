@@ -8,6 +8,10 @@
 *.mpf
 *.ini
 *.mti0
+*.qdb
+*.qpg
+*.qtl
+
 
 # Ignore transcript and work libraries
 transcript
