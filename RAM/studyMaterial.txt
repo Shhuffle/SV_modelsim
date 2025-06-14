@@ -1,0 +1,46 @@
+In this Ram project i learned to create interface , tri port and how to use force and release
+also clocking block
+
+Clocking block
+It defines a set of signals that are sampled and or driven with respect to a clock edge.
+
+It is used as it prevents race conditions between testbench and DUT.
+Clearly defines who drives what and when 
+
+
+Declarion (outside any procedural block)
+Clocking blocks should be declared at the module level (not inside initial or always blocks).
+
+clocking cb @(posedge m.clk);  // Use the clock signal
+  default input #1step output #1step;  // Define skew/timing
+  output m.rd, m.wd, m.cs, m.addlines;
+  input m.datalines;
+endclocking
+
+
+ Use non-blocking assignments (<=)
+
+
+WITHOUT CLOCKING BLOCK
+ always @(posedge clk) begin
+  dut_out <= some_value;  // DUT assigns
+end
+
+initial begin
+  dut_out = another_value; // Testbench assigns at the same time — race!
+end
+
+
+WITH CLOCKING BLOCK
+clocking cb @(posedge clk);
+  input dut_out;
+  output tb_out;
+endclocking
+
+cb.tb_out <= some_value;  // Driven safely after DUT evaluation
+$display("DUT says: %b", cb.dut_out);  // Sampled after DUT updates
+
+
+
+NOTE: The waveform picture contains the simulation of the testbench where i have simulated writing to the memeory(port 20 val = 69) and reading form the 
+memory (same port 20).
