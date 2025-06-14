@@ -28,14 +28,22 @@ module RAM(mem_if.ram_32 inf);
 	
 
 
-	
+	property no_simultaneous_rd_wr;
+	@(posedge inf.clk) !((!$isunknown(inf.rd) && !$isunknown(inf.wd)) &&  (!(inf.rd && inf.wd))); //if both read and write signal are known then they shouldnt be 1 simulataneously
+	endproperty
+	assert property(no_simultaneous_rd_wr)
+	else $error("Both read and write asserted");
+
+
+
+
 	always_ff @(posedge inf.clk or posedge inf.rst) begin 
+
+		
 		if(inf.rst) begin
 				for(int i = 0; i<32; i++)
 					ram_mem[i] <= 8'b0;
 		end else if(!inf.cs) begin 
-		end else if(inf.rd == 1'b1 && inf.wd == 1'b1) begin
-			drive_enable <= 1'b0;
 		end else if(inf.rd == 1'b1) begin
 				drive_enable <=1'b1; 
 				data_out <= ram_mem[inf.addlines];
@@ -68,6 +76,8 @@ end
 initial begin
 	m.rst = 1'b1;
 	#10 m.rst = 1'b0;
+	m.cb.rd <= 1'b0;
+	m.cb.wd <= 1'b0;
 	
 
 	//Write 69 in the RAM at address 20
@@ -84,6 +94,13 @@ initial begin
 	//Read from the address 20
 	m.cb.rd <= 1'b1;
 	#50 m.cb.rd <= 1'b0;
+
+	//Read and Write assertion 
+	m.cb.rd <= 1'b1;
+	m.cb.wd <= 1'b1;
+	#20 
+	m.cb.rd <= 1'b0;
+	m.cb.wd <= 1'b0;
 
 	#200 $finish;
 
