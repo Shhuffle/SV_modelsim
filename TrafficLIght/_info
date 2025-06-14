@@ -1,0 +1,88 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+YMUX
+Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
+Z1 !s110 1749817923
+!i10b 1
+!s100 H0WogFZHIXAQ:c9<lA@U<0
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IjWf8Y`nQTDi>lf^G^]VIE2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+S1
+Z4 dC:/modelsim
+Z5 w1749817149
+Z6 8C:/modelsim/Mux2_1.sv
+Z7 FC:/modelsim/Mux2_1.sv
+!i122 3
+L0 1 0
+Z8 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z9 !s108 1749817923.000000
+!s107 C:/modelsim/Mux2_1.sv|
+Z10 !s90 -reportprogress|300|-work|work|-sv|-stats=none|C:/modelsim/Mux2_1.sv|
+!i113 1
+Z11 o-work work -sv
+Z12 tCvgOpt 0
+n@m@u@x
+vMUX2_1
+R0
+R1
+!i10b 1
+!s100 LaT3FRaKZX?zinMLGjU4z1
+R2
+ImCROj<;c3L8kH2nkJ^<@j2
+R3
+S1
+R4
+R5
+R6
+R7
+!i122 3
+L0 10 8
+R8
+r1
+!s85 0
+31
+R9
+Z13 !s107 C:/modelsim/Mux2_1.sv|
+R10
+!i113 1
+R11
+R12
+n@m@u@x2_1
+vtb
+R0
+R1
+!i10b 1
+!s100 @aN;Bcd<mPG9RZ2[c=RW?3
+R2
+InNHgFWI0=z^maQFUdz]P>2
+R3
+S1
+R4
+R5
+R6
+R7
+!i122 3
+L0 19 19
+R8
+r1
+!s85 0
+31
+R9
+R13
+R10
+!i113 1
+R11
+R12

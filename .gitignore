@@ -1,0 +1,29 @@
+# Ignore ModelSim-generated files and folders
+*.wlf
+*.bak
+*.log
+*.vstf
+*.db
+*.mti
+*.mpf
+*.ini
+*.mti0
+
+# Ignore transcript and work libraries
+transcript
+work/
+vsim.wlf
+modelsim.ini
+*.crtb
+
+# Ignore other common IDE/user files
+*.swp
+*.swo
+*.vcd
+*.vpd
+*.sav
+*.sdf
+
+# Ignore Windows/macOS system files
+Thumbs.db
+.DS_Store

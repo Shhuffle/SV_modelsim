@@ -1,0 +1,60 @@
+
+interface intr();
+logic clk,reset;
+logic [1:0] out;
+modport TL(input clk,reset, 
+	output out);
+
+endinterface
+
+
+
+
+
+module traffic_light(intr.TL i_f);
+
+typedef enum logic [1:0] {
+	green, 	
+	yellow,
+	red
+	
+}t_light;
+t_light c_light , n_light;
+
+always_ff @(posedge i_f.clk or posedge i_f.reset) begin 
+	if(i_f.reset)
+		c_light <= red;	
+	else	
+		c_light <= n_light;
+end
+
+always_comb begin
+	case(c_light)
+		green: n_light = yellow;
+		yellow: n_light = red;
+		red: n_light =green;
+	endcase
+	i_f.out <= n_light
+end
+endmodule
+
+
+module tb;
+	intr intr0();
+	traffic_light dut(intr0.TL);
+	initial intr0.clk = 0;
+	always #5 intr0.clk = ~intr0.clk
+	
+
+	initial begin 
+	intr0.reset = 1;
+	#15 intr0.reset = 0;
+	end
+	
+	initial begin
+	#100;
+	end
+
+
+
+endmodule
